@@ -1,0 +1,10 @@
+<h1><%= @project.name %></h1>
+
+<ul>
+  <li>Funding Goal: $<%= @project.funding_goal %></li>
+  <li>End Date: <%= @project.end_date.strftime("%A, %d %b %Y %l:%M %p") %></li>
+  <li>Project Owner: <%= @project.owner.first_name + " " + @project.owner.last_name %></li>
+  <li>About the project:
+    <p><%= @project.description %></p>
+  </li>
+</ul>
