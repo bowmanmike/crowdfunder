@@ -20,7 +20,8 @@ class ProjectsController < ApplicationController
     @project.owner_id = 3
 
     if @project.save
-      render projects_path(@project)
+      redirect_to project_path(@project)
+    end
   end
 
   def update
@@ -34,6 +35,7 @@ class ProjectsController < ApplicationController
 
   private
   def project_params
+    params.require(:project).permit(:name, :end_date, :funding_goal, :description)
   end
 
 end

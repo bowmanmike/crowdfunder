@@ -10,6 +10,9 @@
 
 <%= yield %>
 
+<% unless current_page?('/projects') %>
+  <%= link_to "Back to Project List", projects_path %>
+<% end %>
 
   <footer>
     2016 - Mike Bowman, Steve O'Neil, Patrick Cruikshank, Matthew Smith &copy;
