@@ -1,1 +1,14 @@
 <h1>Crowdfunder</h1>
+
+<div class="show-projects">
+  <% if @projects.any? %>
+    <h4>All Projects</h4>
+    <ul>
+    <% @projects.each do |project| %>
+      <li><%= link_to project.name, project_path(project) %></li>
+    <% end %>
+    </ul>
+  <% else %>
+    <p>No Projects yet!</p>
+  <% end %>
+</div>
