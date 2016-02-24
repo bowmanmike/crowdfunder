@@ -5,6 +5,20 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-User.create(first_name: "Mike", last_name: "Bowman")
+User.create(first_name: "Mike", last_name: "Bowman", email: "msmithros@hotmail.com", password: "mike",
+            password_confirmation: "mike" )
+User.create(first_name: "Matthew", last_name: "Smith", email: "matthewalexander108@gmail.com", password: "matthew",
+            password_confirmation: "matthew" )
+User.create(first_name: "Steve", last_name: "Oniel", email: "steve@gmail.com", password: "steve",
+            password_confirmation: "steve" )
 
-Project.create(name: "crowdfunder", own)
+Project.create(name: "kickstarter", end_date: Time.current, funding_goal: 100000, description: "This is a serious
+project yo", owner_id: 7)
+Project.create(name: "kickstand", end_date: Time.current, funding_goal: 100000, description: "This is a serious
+project yo", owner_id: 8)
+Project.create(name: "crowdfunder", end_date: Time.current, funding_goal: 100000, description: "This is a serious
+project yo", owner_id: 9)
+#
+# Project.rewards.create(name: "John Boy", price: 50, number_available: 1, project_id: 1)
+# Project.rewards.create(name: "John Boy", price: 50, number_available: 1, project_id: 2)
+# Project.rewards.create(name: "John Boy", price: 50, number_available: 1, project_id: 3)
