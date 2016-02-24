@@ -1,0 +1,14 @@
+<h1>Update Pledge from <%= @pledge.backer.last_name %> for <%= @project.name %></h1>
+
+<%= form_for [@project, @pledge] do |f| %>
+
+  <div class="field">
+    <%= f.label :amount %>
+    <%= f.number_field :amount, value: @pledge.amount %>
+  </div>
+
+  <div class="action">
+    <%= f.submit "Submit your pledge" %>
+  </div>
+
+<% end %>
