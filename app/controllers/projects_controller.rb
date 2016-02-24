@@ -26,10 +26,12 @@ class ProjectsController < ApplicationController
     end
   end
 
-  def update
+  def edit
+    @project = Project.find(params[:id])
   end
 
-  def edit
+  def update
+    
   end
 
   def destroy
