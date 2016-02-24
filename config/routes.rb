@@ -1,11 +1,14 @@
 Rails.application.routes.draw do
-  root 'projects#index'
+
+  root 'users#index'
 
   resources :projects do
     resources :rewards, :pledges
   end
 
   resources :users
-  resources :sessions, only: [:new, :create, :destroy]
+  resources :sessions
 
+  get 'login'   => 'sessions#new',    :as => :login
+  post 'logout' => 'sessions#destroy',:as => :logout
 end
