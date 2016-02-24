@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root 'pledges#index'
+  root 'projects#index'
 
   resources :projects do
     resources :rewards, :pledges
