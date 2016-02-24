@@ -23,14 +23,16 @@
   </div>
 
   <h3>Rewards</h3>
-    <%= f.fields_for :rewards do |rewards_form| %>
-      <%= render "reward_fields", f: rewards_form %>
+    <div id="rewards">
+      <%= f.fields_for :rewards do |reward_fields| %>
+        <%= render "reward_fields", f: reward_fields %>
 
-      <div class="link">
-        <%= link_to_add_association "Add another reward", f, :rewards %>
-      </div>
+        <div class="links">
+          <%= link_to_add_association "Add another reward", f, :rewards %>
+        </div>
 
-    <% end %>
+      <% end %>
+    </div>
 
   <div class="action">
     <%= f.submit "Create New Project" %>
