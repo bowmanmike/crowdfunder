@@ -1,17 +1,14 @@
 FactoryGirl.define do
-  factory :pledge, class: "Pledge" do
+  factory :pledge1, class: "Pledge" do
     amount 20
   end
 
-  factory :pledge, class: "Pledge" do
-    amount 50
+  factory :pledge2, class: "Pledge" do
+    amount 40
   end
 
-  factory :reward, class: "Reward" do
-    name "Reward A"
-    price 50
-    description "T-Shirt and Hat"
-    number_available 20
+  factory :pledge3, class: "Pledge" do
+    amount 50
   end
 
 end

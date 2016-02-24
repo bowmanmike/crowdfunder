@@ -16,6 +16,7 @@ class PledgesController < ApplicationController
   def create
     @pledge = @project.pledges.build(pledge_params)
     @pledge.backer = current_user
+    @pledge.get_reward?(@pledge, @project)
 
     if @pledge.save
       redirect_to project_pledges_path(@project), notice: "Pledge successfully submitted!"
@@ -32,6 +33,7 @@ class PledgesController < ApplicationController
     @pledge = Pledge.find(params[:id])
 
     if @pledge.update_attributes(pledge_params)
+      @pledge.get_reward?(@pledge, @project)
       flash[:notice] = "Pledge successfully updated."
       redirect_to project_pledges_path(@project)
     else
