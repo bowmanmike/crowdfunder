@@ -20,6 +20,7 @@ class ProjectsController < ApplicationController
     @project.owner_id = 3
 
     if @project.save
+      flash[:notice] = "Project successfully created!"
       redirect_to project_path(@project)
     else
       render :new
@@ -34,6 +35,7 @@ class ProjectsController < ApplicationController
     @project = Project.find(params[:id])
 
     if @project.update_attributes(project_params)
+      flash[:notice] = "Project successfully edited."
       redirect_to project_path(@project)
     else
       render :edit
@@ -43,7 +45,7 @@ class ProjectsController < ApplicationController
   def destroy
     @project = Project.find(params[:id])
     @project.destroy
-    
+    flash[:notice] = "Project successfully deleted."
     redirect_to projects_path
   end
 
