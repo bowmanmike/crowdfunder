@@ -16,8 +16,7 @@ class ProjectsController < ApplicationController
     @project = Project.create(project_params)
     # no current_user method yet, temporarily setting
     # all new projects to owner_id = 3
-    # @project.owner = current_user
-    @project.owner_id = 3
+    @project.owner = current_user
 
     if @project.save
       flash[:notice] = "Project successfully created!"

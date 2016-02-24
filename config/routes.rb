@@ -2,9 +2,9 @@ Rails.application.routes.draw do
 
   root 'users#index'
 
-  # resources :projects do
-  #   resources :rewards, :pledges
-  # end
+  resources :projects do
+    resources :rewards, :pledges
+  end
 
   resources :users
   resources :sessions
