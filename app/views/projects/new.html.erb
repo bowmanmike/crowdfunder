@@ -22,6 +22,29 @@
     <%= f.text_area :description %>
   </div>
 
+  <h3>Rewards</h3>
+    <%= f.fields_for :rewards do |rewards_form| %>
+      <div class="field">
+        <%= rewards_form.label :name %>
+        <%= rewards_form.text_field :name %>
+      </div>
+
+      <div class="field">
+        <%= rewards_form.label :price %>
+        <%= rewards_form.number_field :price %>
+      </div>
+
+      <div class="field">
+        <%= rewards_form.label :number_available %>
+        <%= rewards_form.number_field :number_available %>
+      </div>
+
+      <div class="field">
+        <%= rewards_form.label :description %>
+        <%= rewards_form.text_area :description %>
+      </div>
+    <% end %>
+
   <div class="action">
     <%= f.submit "Create New Project" %>
   </div>
