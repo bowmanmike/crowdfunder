@@ -1,41 +1,59 @@
 class PledgesController < ApplicationController
+  before_action :load_project
 
   def index
     @pledges = Pledge.all
   end
 
   def show
-    @project = Project.find(params[:project_id])
     @pledge = Pledge.find(params[:id])
   end
 
   def new
-    @project = Project.find(params[:project_id])
     @pledge = Pledge.new
   end
 
   def create
-    @project = Project.find(params[:project_id])
-    @pledge = Pledge.new(pledge_params)
+    @pledge = @project.pledges.build(pledge_params)
+    # @pledge.backer = current_user
 
     if @pledge.save
-      redirect_to project_pledge_path, notice: "Pledge successfully submitted!"
+      redirect_to project_pledges_path(@project), notice: "Pledge successfully submitted!"
     else
-      render :new
+      render :new, notice: "Pledge not successfully submitted!"
     end
   end
 
-  def update
+  def edit
+    @pledge = Pledge.find(params[:id])
   end
 
-  def edit
+  def update
+    @pledge = Pledge.find(params[:id])
+
+    if @pledge.update_attributes(pledge_params)
+      flash[:notice] = "Pledge successfully updated."
+      redirect_to project_pledges_path(@project)
+    else
+      render :edit
+    end
   end
 
   def destroy
+    @pledge = Pledge.find(params[:id])
+    @pledge.destroy
+    flash[:notice] = "Pledge successfully deleted."
+    redirect_to project_pledges_path
   end
 
   private
+
   def pledge_params
-    params.require(:pledge).permit(:amount)
+    params.require(:pledge).permit(:amount, :backer_id)
   end
+
+  def load_project
+    @project = Project.find(params[:project_id])
+  end
+
 end

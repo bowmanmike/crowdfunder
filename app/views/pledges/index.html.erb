@@ -1,1 +1,13 @@
 <h1>Pledges for <%= @project.name %></h1>
+
+<div class="show-pledges">
+  <% if @project.pledges.any? %>
+    <ul>
+    <% @project.pledges.each do |pledge| %>
+      <li><%= "Backer: " + pledge.backer.first_name + " " + pledge.backer.last_name + " - $" + pledge.amount.to_s %></li>
+    <% end %>
+    </ul>
+  <% else %>
+    <p>No Pledges yet!</p>
+  <% end %>
+</div>
