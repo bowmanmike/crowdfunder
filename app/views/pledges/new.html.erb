@@ -1,24 +1,28 @@
-<div>
-  <% pledge = @project.pledges.find_by(backer_id: current_user) %>
-    <% if pledge %>
-    <%= controller.redirect_to edit_project_pledge_path(@project.id, pledge.id), notice: "You have already backed this project...please update your pledge!" %>
-  <% else %>
+<% if current_user%>
 
-    <h1>Create a New Pledge for <%= @project.name %></h1>
+    <% pledge = @project.pledges.find_by(backer_id: current_user) %>
+      <% if pledge %>
+      <%= controller.redirect_to edit_project_pledge_path(@project, pledge), notice: "You have already backed this project...please update your pledge!" %>
+    <% else %>
 
-    <%= form_for [@project, @pledge] do |f| %>
+      <h1>Create a New Pledge for <%= @project.name %></h1>
 
-    <div class="field">
-      <%= f.label :amount %>
-      <%= f.number_field :amount %>
-    </div>
+      <%= form_for [@project, @pledge] do |f| %>
 
-    <div class="action">
-      <%= f.submit "Submit your pledge" %>
-    </div>
+      <div class="field">
+        <%= f.label :amount %>
+        <%= f.number_field :amount %>
+      </div>
+
+      <div class="action">
+        <%= f.submit "Submit your pledge" %>
+      </div>
+
+      <% end %>
 
     <% end %>
 
-  <% end %>
+  <% else %>
+    <%= controller.redirect_to login_path, notice: "Please register/login before pledging support for a project." %>
 
-</div>
+  <% end %>

@@ -18,7 +18,7 @@ class PledgesController < ApplicationController
     @pledge.backer = current_user
 
     if @pledge.save
-      redirect_to project_pledges_path(@project), notice: "Pledge successfully submitted!"
+      redirect_to project_pledge_path(@project, @pledge), notice: "Pledge successfully submitted!"
     else
       render :new, notice: "Pledge not successfully submitted!"
     end
@@ -49,7 +49,7 @@ class PledgesController < ApplicationController
   private
 
   def pledge_params
-    params.require(:pledge).permit(:amount, :backer_id)
+    params.require(:pledge).permit(:amount)
   end
 
   def load_project

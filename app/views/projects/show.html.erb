@@ -1,5 +1,10 @@
 <h1><%= @project.name %></h1>
 
+<% pledge = @project.pledges.find_by(backer_id: current_user) %>
+<% if pledge %>
+  <h4> You have pledged $<%= pledge.amount %> to this project!    <%= link_to "Update your pledge", new_project_pledge_path(@project) %></h4>
+<% end %>
+
 <ul>
   <li>Funding Goal: $<%= @project.funding_goal %></li>
   <li>End Date: <%= @project.end_date.strftime("%A, %d %b %Y %l:%M %p") %></li>
