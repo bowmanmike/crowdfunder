@@ -5,12 +5,13 @@ class Pledge < ActiveRecord::Base
 
   # method to assign award to a pledge if the pledge reaches
   # reward price threshold
-  def get_reward?(pledge, project)
+  def get_reward?(project)
     project.rewards.sort_by { |reward| reward.price }.each do |reward|
-      if pledge.amount >= reward.price
-        pledge.reward = reward if reward.available?
+      if self.amount >= reward.price
+        self.reward = reward if reward.available?
       end
     end
+    self.reward
   end
 
 end

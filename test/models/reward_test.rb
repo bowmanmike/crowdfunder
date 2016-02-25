@@ -20,7 +20,6 @@ class RewardTest < ActiveSupport::TestCase
   end
 
   test "reward is not available" do
-    # p @reward2.pledges.count
     assert_not @reward2.available?
   end
 
