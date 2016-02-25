@@ -35,6 +35,7 @@
 <div>
 
   <h3>Total pledges for this project: $<%= @project.pledges.all.sum(:amount) %>.00</h3>
+  <h4>Distance to Goal: $<%= @project.funding_goal - @project.pledges.all.sum(:amount) %></h4>
 
   <% pledge = @project.pledges.find_by(backer_id: current_user) %>
   <% if current_user && pledge %>
