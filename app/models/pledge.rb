@@ -6,11 +6,24 @@ class Pledge < ActiveRecord::Base
   belongs_to :project
   belongs_to :reward
 
-  # method to assign award to a pledge if the pledge reaches
-  # reward price threshold
-  # This method works, but it doesn't get called properly when you create a pledge -- Mike
+  # method to assign reward to a pledge if the pledge reaches
+  # reward's price threshold
   def get_reward?(project)
-    project.rewards.sort_by { |reward| reward.price }.each do |reward|
+    max_reward = project.rewards.max_by(&:price)
+    ordered_rewards = project.rewards.sort_by { |reward| reward.price }
+
+    # if user already has the highest reward and is INCREASING their pledge,
+    # no action is taken
+    return if self.reward == max_reward && self.amount >= max_reward.price
+
+    # if user has a reward already, but the increase in their pledge does
+    # not take them to the next reward level, no action is taken
+    if self.reward && self.reward != max_reward
+      next_reward = ordered_rewards[(ordered_rewards.index(self.reward) + 1)]
+      return if self.amount < next_reward.price
+    end
+
+    ordered_rewards.each do |reward|
       if self.amount >= reward.price
         self.reward = reward if reward.available?
       end
