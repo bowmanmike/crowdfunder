@@ -1,6 +1,7 @@
-<h1>Edit <%= @project.name %></h1>
+<% if @project.owner == current_user %>
+  <h1>Edit <%= @project.name %></h1>
 
-<%= form_for @project do |f| %>
+  <%= form_for @project do |f| %>
 
   <div class="field">
     <%= f.label :name %>
@@ -26,6 +27,10 @@
     <%= f.submit "Update Project" %>
   </div>
 
-<% end %>
+  <% end %>
 
-<%= link_to "Delete This Project", @project, method: :delete, data: {confirm: "Are you sure you want to delete this project?"} %>
+  <%= link_to "Delete This Project", @project, method: :delete, data: {confirm: "Are you sure you want to delete this project?"} %>
+
+<% else %>
+  <%= controller.redirect_to project_path, notice: "Access to edit project denied!" %>
+<% end %>
