@@ -10,6 +10,7 @@ class ProjectsController < ApplicationController
 
   def new
     @project = Project.new
+    @project.rewards.build
   end
 
   def create
@@ -48,7 +49,7 @@ class ProjectsController < ApplicationController
 
   private
   def project_params
-    params.require(:project).permit(:name, :end_date, :funding_goal, :description)
+    params.require(:project).permit(:name, :end_date, :funding_goal, :description, rewards_attributes: [:name, :price, :description, :number_available, :project_id, :_destroy])
   end
 
 end

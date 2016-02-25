@@ -22,6 +22,18 @@
     <%= f.text_area :description %>
   </div>
 
+  <h3>Rewards</h3>
+    <div id="rewards">
+      <%= f.fields_for :rewards do |reward_fields| %>
+        <%= render "reward_fields", f: reward_fields %>
+
+        <div class="links">
+          <%= link_to_add_association "Add another reward", f, :rewards %>
+        </div>
+
+      <% end %>
+    </div>
+
   <div class="action">
     <%= f.submit "Create New Project" %>
   </div>

@@ -14,6 +14,18 @@
   </li>
 </ul>
 
+<div class="rewards">
+  <h3>Rewards!</h3>
+  <% @project.rewards.each do |reward| %>
+  <p>
+    Amount: $<%= reward.price %><br>
+    Reward Tier: <%= reward.name %><br>
+    Number Available: <%= reward.number_available%><br>
+    Description: <%= reward.description %><br>
+  </p>
+  <% end %>
+</div>
+
 <%= render "pledges/index" %>
 
 <%= link_to "Pledge to this project", new_project_pledge_path(@project) %>

@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  root 'users#index'
+  root 'projects#index'
 
   resources :projects do
     resources :rewards, :pledges
