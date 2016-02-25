@@ -3,10 +3,13 @@
 <%= link_to "Edit tag", edit_tag_path(@tag) %>
 
 <h3>Items tagged as <i><%= @tag.name %></i>...</h3>
-<% if @tag.projects.any? %>
-  <% @tag.projects.each do |project| %>
-    <li><%= link_to "#{project.name}", project_path(project) %></li>
-  <% end %><br>
-<% else %>
-  <p>No projects tagged as <i><%= @tag.name %></i> yet...</p>
-<% end %>
+
+<div class="display-tagged-projects">
+  <% if @tag.projects.any? %>
+    <%= render @projects %>
+  <% else %>
+    <p>No projects...</p>
+  <% end %>
+</div>
+
+<%= paginate @projects %>

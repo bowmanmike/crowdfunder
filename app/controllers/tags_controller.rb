@@ -6,6 +6,7 @@ class TagsController < ApplicationController
   end
 
   def show
+    @projects = @tag.projects.order('projects.created_at DESC').page(params[:page])
   end
 
   def new
