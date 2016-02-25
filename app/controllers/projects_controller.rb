@@ -6,6 +6,12 @@ class ProjectsController < ApplicationController
 
   def show
     @project = Project.find(params[:id])
+    @tags = @project.tags.order(name: :asc)
+
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def new
