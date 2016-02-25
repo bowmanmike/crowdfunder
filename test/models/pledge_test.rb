@@ -33,6 +33,15 @@ class PledgeTest < ActiveSupport::TestCase
   end
 
   # keep pledge from getting reward if unavailable
-  
+  test "no reward if unavailable" do
+    @reward1.number_available = 0
+    @reward2.number_available = 0
+    assert_not @pledge3.get_reward?(@project)
+  end
+
+  test "get next lower available reward if target reward is unavailable" do
+    @reward1.number_available = 0
+    assert @pledge3.get_reward?(@project) == @reward2
+  end
 
 end
