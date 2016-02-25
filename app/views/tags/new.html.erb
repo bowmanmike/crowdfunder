@@ -1,0 +1,12 @@
+<h1>Create a Tag:</h1>
+
+<%= form_for @tag do |f| %>
+  <div class="field">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+
+  <div class="action">
+    <%= f.submit "create tag" %>
+  </div>
+<% end %>
