@@ -1,8 +1,8 @@
 <h1><%= @project.name %></h1>
 
 <% pledge = @project.pledges.find_by(backer_id: current_user) %>
-<% if pledge %>
-  <h4> You have pledged $<%= pledge.amount %> to this project!    <%= link_to "Update your pledge", new_project_pledge_path(@project) %></h4>
+<% if current_user && pledge %>
+  <h4>You have pledged $<%= pledge.amount %> to this project! <%= link_to "Update your pledge", new_project_pledge_path(@project) %></h4>
 <% end %>
 
 <ul>
@@ -13,6 +13,8 @@
     <p><%= @project.description %></p>
   </li>
 </ul>
+
+<%= render "pledges/index" %>
 
 <%= link_to "Pledge to this project", new_project_pledge_path(@project) %>
 <br>

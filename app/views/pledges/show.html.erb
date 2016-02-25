@@ -1,7 +1,7 @@
 <h1>Pledge from <%= @pledge.backer.first_name + " " + @pledge.backer.last_name %></h1>
 
 <ul>
-  <li>Project: $<%= @project.name %></li>
+  <li>Project: <%= @project.name %></li>
   <li>Pledge amount: $<%= @pledge.amount %></li>
-  <li>Eligible reward: $<%= @pledge.reward %></li>
+  <li>Eligible reward: <%= @pledge.reward %></li>
 </ul>
