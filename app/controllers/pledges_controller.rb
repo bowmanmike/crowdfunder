@@ -34,6 +34,7 @@ class PledgesController < ApplicationController
 
     if @pledge.update_attributes(pledge_params)
       @pledge.get_reward?(@project)
+      @pledge.save
       flash[:notice] = "Pledge successfully updated."
       redirect_to project_path(@project)
     else
