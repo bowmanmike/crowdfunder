@@ -2,12 +2,12 @@
 
 one:
   amount: 1
-  user_id: 
-  project_id: 
-  reward_id: 
+  user: one
+  project_id:
+  reward_id:
 
 two:
   amount: 1
-  user_id: 
-  project_id: 
-  reward_id: 
+  user: two
+  project_id:
+  reward_id:
