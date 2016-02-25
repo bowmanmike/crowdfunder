@@ -14,6 +14,16 @@
   </li>
 </ul>
 
+<% if @project.tags.any? %>
+  <% @project.tags.sort_by { |tag| tag.name }.each do |tag| %>
+    <%= link_to "#{tag.name}", tag_path(tag) %> |
+  <% end %>
+<% end %>
+
+<div class="add-tags">
+  <%= render 'add_tag_form' %>
+</div>
+
 <div class="rewards">
   <h3>Rewards!</h3>
   <% @project.rewards.each do |reward| %>

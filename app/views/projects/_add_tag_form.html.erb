@@ -1,0 +1,4 @@
+<%= form_for @project do |f| %>
+  <%= f.collection_select :tags, Tag.all, :id, :name %>
+  <%= f.submit "Add Tag" %>
+<% end %>

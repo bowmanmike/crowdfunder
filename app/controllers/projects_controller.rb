@@ -32,6 +32,13 @@ class ProjectsController < ApplicationController
   def update
     @project = Project.find(params[:id])
 
+    if params[:project][:tags]
+      @tag = Tag.find(params[:project][:tags])
+      @project.tags << @tag unless @project.tags.include?(@tag)
+      redirect_to project_path(@project)
+      return
+    end
+
     if @project.update_attributes(project_params)
       flash[:notice] = "Project successfully edited."
       redirect_to project_path(@project)
