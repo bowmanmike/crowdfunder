@@ -8,9 +8,9 @@ class User < ActiveRecord::Base
   validates :email, uniqueness: true
 
 
-  has_many :owned_projects, class_name: Project, foreign_key: 'owner_id'
+  has_many :owned_projects, class_name: Project, foreign_key: 'owner_id', dependent: :destroy
   has_many :pledged_projects, through: :pledges, class_name: Project, foreign_key: 'project_id'
-  has_many :pledges, foreign_key: 'backer_id'
+  has_many :pledges, foreign_key: 'backer_id', dependent: :destroy
   has_many :rewards, through: :pledges
 
 
