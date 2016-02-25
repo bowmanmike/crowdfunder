@@ -34,7 +34,7 @@ class ProjectsController < ApplicationController
 
     if params[:project][:tags]
       @tag = Tag.find(params[:project][:tags])
-      @project.tags << @tag unless @project.tags.include?(@tag)
+      @project.add_tag(@tag)
       redirect_to project_path(@project)
       return
     end
