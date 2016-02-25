@@ -14,10 +14,10 @@
   </li>
 </ul>
 
-<% if @project.tags.any? %>
-  <% @project.tags.sort_by { |tag| tag.name }.each do |tag| %>
-    <%= link_to "#{tag.name}", tag_path(tag) %> |
-  <% end %>
+<% if @project.tags != nil %>
+  <div class="list-tags">
+    <%= render @tags %>
+  </div>
 <% end %>
 
 <div class="add-tags">
