@@ -37,6 +37,12 @@ class ProjectsController < ApplicationController
 
   def update
     @project = Project.find(params[:id])
+    @tags = @project.tags.order(name: :asc)
+
+    if params[:tag]
+      @project.tags.delete(params[:tag])
+      return
+    end
 
     if params[:project][:tags]
       @tag = Tag.find(params[:project][:tags])
