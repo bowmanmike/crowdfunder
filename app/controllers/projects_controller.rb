@@ -6,6 +6,12 @@ class ProjectsController < ApplicationController
 
   def show
     @project = Project.find(params[:id])
+    @tags = @project.tags.order(name: :asc)
+
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def new
@@ -31,6 +37,13 @@ class ProjectsController < ApplicationController
 
   def update
     @project = Project.find(params[:id])
+
+    if params[:project][:tags]
+      @tag = Tag.find(params[:project][:tags])
+      @project.add_tag(@tag)
+      redirect_to project_path(@project)
+      return
+    end
 
     if @project.update_attributes(project_params)
       flash[:notice] = "Project successfully edited."

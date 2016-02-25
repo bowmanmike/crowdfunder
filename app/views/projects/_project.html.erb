@@ -1,0 +1,3 @@
+<% @tag.projects.each do |project| %>
+  <li><%= link_to project.name, project_path(project) %>, created by <i><%= link_to project.owner.username, user_path(project.owner) %></i></li>
+<% end %><br>

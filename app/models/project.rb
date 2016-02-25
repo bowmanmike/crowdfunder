@@ -8,4 +8,10 @@ class Project < ActiveRecord::Base
   accepts_nested_attributes_for :rewards, reject_if: :all_blank, allow_destroy: true
   has_many :pledges, dependent: :destroy
   has_many :rewards, dependent: :destroy
+  has_and_belongs_to_many :tags
+
+  def add_tag(tag)
+    self.tags << tag unless self.tags.include?(tag)
+  end
+
 end

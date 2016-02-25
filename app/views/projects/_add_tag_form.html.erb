@@ -1,0 +1,4 @@
+<%= form_for @project, remote: true, html: { id: "add-tag" } do |f| %>
+  <%= f.collection_select :tags, Tag.all.order(name: :asc), :id, :name %>
+  <%= f.submit "Add Tag" %>
+<% end %>

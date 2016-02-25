@@ -10,6 +10,16 @@
   </li>
 </ul>
 
+<% if @project.tags != nil %>
+  <div class="list-tags">
+    <%= render @tags %>
+  </div>
+<% end %>
+
+<div class="add-tags">
+  <%= render 'add_tag_form' %>
+</div>
+
 <div class="rewards">
   <h3>Rewards!</h3>
   <% @project.rewards.each do |reward| %>

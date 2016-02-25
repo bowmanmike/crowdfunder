@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     resources :rewards, :pledges
   end
 
+  resources :tags
   resources :users
   resources :sessions
 

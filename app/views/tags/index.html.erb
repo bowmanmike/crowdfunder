@@ -1,0 +1,13 @@
+<h1>Project Categories:</h1>
+
+<p><%= link_to "Add a tag", new_tag_path %></p>
+
+<div class="display-tags">
+  <% if @tags.any? %>
+    <% @tags.sort_by { |tag| tag.name }.each do |tag| %>
+      <li><%= link_to "#{tag.name}", tag_path(tag) %></li>
+    <% end %>
+  <% else %>
+    <h3>No tags yet...</h3>
+  <% end %><br>
+</div>
