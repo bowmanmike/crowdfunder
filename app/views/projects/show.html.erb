@@ -1,9 +1,5 @@
 <h1><%= @project.name %></h1>
 
-<% pledge = @project.pledges.find_by(backer_id: current_user) %>
-<% if current_user && pledge %>
-  <h4>You have pledged $<%= pledge.amount %> to this project! <%= link_to "Update your pledge", new_project_pledge_path(@project) %></h4>
-<% end %>
 
 <ul>
   <li>Funding Goal: $<%= @project.funding_goal %></li>
@@ -26,10 +22,23 @@
   <% end %>
 </div>
 
-<%= render "pledges/index" %>
+<div>
 
-<%= link_to "Pledge to this project", new_project_pledge_path(@project) %>
-<br>
-<% if @project.owner == current_user %>
+  <h3>Total pledges for this project: $<%= @project.pledges.all.sum(:amount) %>.00</h3>
+
+  <% pledge = @project.pledges.find_by(backer_id: current_user) %>
+  <% if current_user && pledge %>
+  <h4>You have pledged $<%= pledge.amount %> to this project! <%= link_to "Update your pledge", new_project_pledge_path(@project) %></h4>
+  <% else%>
+    <%= link_to "Pledge to this project", new_project_pledge_path(@project) %>
+  <% end %>
+
+</div>
+
+<div>
+  <% if @project.owner == current_user %>
+  <%= render "pledges/index" %>
+  <br>
   <%= link_to "Edit or Delete this project", edit_project_path %>
-<% end %>
+  <% end %>
+</div>
