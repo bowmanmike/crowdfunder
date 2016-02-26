@@ -23,7 +23,7 @@ class Pledge < ActiveRecord::Base
       return if self.amount < next_reward.price
     end
 
-    ordered_rewards.each do |reward|
+    ordered_rewards.each do |reward| 
       if self.amount >= reward.price
         self.reward = reward if reward.available?
       end
