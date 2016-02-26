@@ -19,7 +19,7 @@ $(document).on('page:load ready', function() {
 
     $.ajax({
       type: 'GET',
-      
+      dataType: 'script'
     })
   })
 });
