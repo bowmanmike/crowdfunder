@@ -1,0 +1,22 @@
+<% if current_user  %>
+
+    <h4>New Comment</h4>
+
+
+    <%= form_for [@project, @comment], remote: true do |f| %>
+
+        <div class="field" >
+          <%= f.text_area :message %>
+        </div>
+
+        <div class="actions">
+          <%= f.submit %>
+        </div>
+
+    <% end %>
+
+<% else %>
+
+    <p>Please <%= link_to "log in", login_path %> to add a comment</p>
+
+<% end %>
