@@ -1,4 +1,9 @@
-<h1>Crowdfunder</h1>
+<p><b>
+  To date: <%= @pledges.count %> backers,
+  $<%= @pledges.all.sum(:amount) %> raised,
+  and <%= @projects.select { |project| project.fully_funded? }.count %>
+  projects fully funded
+</b></p>
 
 <% if current_user %>
   <%= link_to "Add a Project", new_project_path %>

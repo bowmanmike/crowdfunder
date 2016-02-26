@@ -10,10 +10,10 @@
 <body>
 
   <div id="nav">
-    <h1>Crowdfunder</h1>
+    <h1><%= link_to "Crowdfunder", root_path %></h1>
     <div class="user-links">
       <% if current_user && !current_page?(user_path(current_user.id)) %>
-        <%= link_to "User Page", user_path(current_user.id) %> | 
+        <%= link_to "User Page", user_path(current_user.id) %> |
       <% end %>
       <% if current_user %>
           <%= link_to "Logout", :logout, method: :post %>
