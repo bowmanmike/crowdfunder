@@ -15,10 +15,10 @@ class CommentsController < ApplicationController
     respond_to do |format|
       if @comment.save
         format.html { redirect_to  project_url(@project.id), notice: 'Comment added.'}
-        format.js {} # This will look for app/views/reviews/create.js.erb
+        format.js {} # This will look for app/views/comments/create.js.erb
       else
         format.html {render 'projects/show', alert: 'There was an error.'}
-        format.js {} # This will look for app/views/reviews/create.js.erb
+        format.js {} # This will look for app/views/comments/create.js.erb
       end
     end
   end
@@ -29,7 +29,7 @@ class CommentsController < ApplicationController
   private
 
   def comment_params
-    params.require(:comment).permit(:comment)
+    params.require(:comment).permit(:message)
   end
 
   def load_project
