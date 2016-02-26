@@ -12,7 +12,18 @@ $(document).on('page:load ready', function() {
     })
   });
 
-  
+  $(document).on('submit', '#new_pledge', function(e) {
+    e.preventDefault();
+    var self = $(this)
+
+    $.ajax({
+      url: self.attr('action'),
+      type: self.attr('method'),
+      dataType: 'script',
+      data: self.serialize()
+    })
+  })
+
 });
 // $(document).on('page:load ready', function() {
   // $('#add-tag').submit(function(e) {

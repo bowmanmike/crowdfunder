@@ -42,7 +42,7 @@
   <h4>Distance to Goal: $<%= @project.funding_goal - @project.pledges.all.sum(:amount) %>.00</h4>
 
   <div class="new_pledge_form">
-    <%= form_for [@project, @pledge] do |f| %>
+    <%= form_for [@project, @pledge], id: "new-pledge" do |f| %>
     <div class="field">
       <%= f.label :amount %>
       <%= f.number_field :amount %>
@@ -73,5 +73,3 @@
 <div id="comments_list">
   <%= render "comments" %>
 </div>
-
-
