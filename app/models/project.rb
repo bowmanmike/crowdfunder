@@ -11,6 +11,8 @@ class Project < ActiveRecord::Base
   has_and_belongs_to_many :tags
   has_many :comments
 
+  mount_uploader :feature_image, FeatureImageUploader
+
 
   def add_tag(tag)
     self.tags << tag unless self.tags.include?(tag)
