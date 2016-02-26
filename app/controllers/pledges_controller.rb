@@ -20,7 +20,12 @@ class PledgesController < ApplicationController
 
 
     if @pledge.save
-      UserMailer.notify_fully_funded(@pledge.backer, @project).deliver_later if @project.fully_funded?
+      if @project.fully_funded?
+        @project.backers.each do |backer|
+          UserMailer.notify_fully_funded(backer, @project).deliver_later
+        end
+      end
+
       redirect_to project_pledge_path(@project, @pledge), notice: "Pledge successfully submitted!"
     else
       render :new, notice: "Pledge not successfully submitted!"
@@ -37,7 +42,13 @@ class PledgesController < ApplicationController
     if @pledge.update_attributes(pledge_params)
       @pledge.get_reward?(@project)
       @pledge.save
-      UserMailer.notify_fully_funded(@pledge.backer, @project).deliver_later if @project.fully_funded?
+
+      if @project.fully_funded?
+        @project.backers.each do |backer|
+          UserMailer.notify_fully_funded(backer, @project).deliver_later
+        end
+      end
+
       flash[:notice] = "Pledge successfully updated."
       redirect_to project_path(@project)
     else
