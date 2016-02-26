@@ -11,7 +11,7 @@
     <p>Please login to add a project</p>
 <% end %>
 
-<%= form_tag root_path, method: :get, id: 'proj-search-form' do %>
+<%= form_tag root_path, method: :get, remote: true, id: 'proj-search-form' do %>
   <%= text_field_tag :proj_search, params[:proj_search] %>
   <%= submit_tag "Search" %>
 <% end %>
@@ -19,11 +19,9 @@
 <div class="show-projects">
   <% if @projects.any? %>
     <h4>All Projects</h4>
-    <ul>
-    <% @projects.each do |project| %>
-      <li><%= link_to project.name, project_path(project) %>, created by <i><%= link_to project.owner.username, user_path(project.owner) %></i></li>
-    <% end %>
-    </ul>
+    <div id="project-list">
+      <%= render @projects %>
+    </div>
   <% else %>
     <p>No Projects yet!</p>
   <% end %>
