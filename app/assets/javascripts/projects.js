@@ -19,21 +19,14 @@ $(document).on('page:load ready', function() {
     $.ajax({
       url: self.attr('action'),
       type: self.attr('method'),
-      dataType: 'script',
-      data: self.serialize()
+      dataType: 'html',
+      data: self.serialize(),
+      success: function(data) {
+        console.log(data)
+        $('#total-pledges').html('<%=j @project.pledges.all.sum(:amount) %>');
+        $('#distance-to-goal').html('<%=j @project.funding_goal - @project.pledges.all.sum(:amount) %>');
+      }
     })
-  })
+  });
 
 });
-// $(document).on('page:load ready', function() {
-  // $('#add-tag').submit(function(e) {
-  //   e.preventDefault();
-  //   var self = $(this)
-  //
-  //   $.ajax({
-  //     url: self.attr('href'),
-  //     type: 'PATCH',
-  //     dataType: 'script'
-  //   });
-  // });
-// });

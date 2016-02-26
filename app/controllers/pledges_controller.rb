@@ -18,6 +18,7 @@ class PledgesController < ApplicationController
     @pledge.backer = current_user
     @pledge.get_reward?(@project)
 
+
     if @pledge.save
       UserMailer.notify_fully_funded(@pledge.backer, @project).deliver_later if @project.fully_funded?
       redirect_to project_pledge_path(@project, @pledge), notice: "Pledge successfully submitted!"
