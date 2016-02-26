@@ -1,6 +1,10 @@
 <h1>Crowdfunder</h1>
 
-<%= link_to "Add a Project", new_project_path %>
+<% if current_user %>
+  <%= link_to "Add a Project", new_project_path %>
+<% else %>
+    <p>Please login to add a project</p>
+<% end %>
 
 <div class="show-projects">
   <% if @projects.any? %>
