@@ -12,6 +12,7 @@ class User < ActiveRecord::Base
   has_many :pledged_projects, through: :pledges, class_name: Project, foreign_key: 'project_id'
   has_many :pledges, foreign_key: 'backer_id', dependent: :destroy
   has_many :rewards, through: :pledges
+  has_many :comments
 
 
 end
