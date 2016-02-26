@@ -6,7 +6,7 @@
     <%= form_for [@project, @comment], remote: true do |f| %>
 
         <div id="comment_errors">
-          <%= render :partial => "errors" %>
+          <%= render :partial => "comments/errors" %>
         </div>
 
         <div class="field" >
