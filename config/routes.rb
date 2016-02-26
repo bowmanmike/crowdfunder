@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   resources :projects do
     resources :rewards, :pledges
-    resources :comments, only [:show, :create, :destroy]
+    resources :comments, only: [:show, :create, :destroy]
   end
 
   resources :tags
