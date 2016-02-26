@@ -1,5 +1,3 @@
-<p id="notice"><%= notice %></p>
-
 <p>
   <strong>First name:</strong>
   <%= @user.first_name %>
@@ -11,8 +9,16 @@
 </p>
 
 <p>
-<strong>Email:</strong>
-<%= @user.email %>
+  <strong>Email:</strong>
+  <%= @user.email %>
+</p>
+
+<p>
+  <% owned_projects = Project.where(owner: current_user).ids %>
+  <% if owned_projects  %>
+  <strong>You have <%= owned_projects.count %> projects, totalling $
+  <%= Pledge.where(project_id: owned_projects).sum(:amount) %> in pledges.</strong>
+  <% end %>
 </p>
 
 

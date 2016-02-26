@@ -12,8 +12,10 @@
   <div id="nav">
     <h1>Crowdfunder</h1>
     <div class="user-links">
+      <% if current_user && !current_page?(user_path(current_user.id)) %>
+        <%= link_to "User Page", user_path(current_user.id) %>
+      <% end %>
       <% if current_user %>
-          <%= link_to "Edit Profile", edit_user_path(current_user.id) %> | 
           <%= link_to "Logout", :logout, method: :post %>
       <% else %>
           <%= link_to "Register", new_user_path %> |
