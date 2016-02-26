@@ -36,6 +36,10 @@ class FeatureImageUploader < CarrierWave::Uploader::Base
     process :resize_to_fit => [50, 50]
   end
 
+  version :feature do
+    process :resize_to_fit => [400, 400]
+  end
+
   # Create different versions of your uploaded files:
 
 
