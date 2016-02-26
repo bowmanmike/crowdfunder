@@ -9,10 +9,16 @@ class ProjectsController < ApplicationController
       @tags = Tag.all
     elsif params[:proj_search]
       @projects = Project.where("LOWER(name) LIKE LOWER(?)", "#{params[:proj_search]}%")
-      @tags = Tag.all
+      @tags = []
+      @projects.each do |project|
+        project.tags.each { |tag| @tags << tag unless @tags.include?(tag) }
+      end
     elsif params[:tag_search]
       @tags = Tag.where("LOWER(name) LIKE LOWER(?)", "#{params[:tag_search]}%")
-      @projects = Project.all
+      @projects = []
+      @tags.each do |tag|
+        tag.projects.each { |project| @projects << project unless @projects.include?(project) }
+      end
     end
 
     respond_to do |format|
