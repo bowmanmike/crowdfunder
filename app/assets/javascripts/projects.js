@@ -11,4 +11,15 @@ $(document).on('page:load ready', function() {
       dataType: 'script'
     })
   });
+
+  $('#add-pledge').on('click', function(e) {
+    e.preventDefault();
+
+    var self = $(this)
+
+    $.ajax({
+      type: 'GET',
+      
+    })
+  })
 });

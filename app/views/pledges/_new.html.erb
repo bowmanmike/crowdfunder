@@ -1,0 +1,14 @@
+<h1>Create a New Pledge for <%= @project.name %></h1>
+
+<%= form_for [@project, @pledge] do |f| %>
+
+<div class="field">
+  <%= f.label :amount %>
+  <%= f.number_field :amount %>
+</div>
+
+<div class="action">
+  <%= f.submit "Submit your pledge" %>
+</div>
+
+<% end %>
