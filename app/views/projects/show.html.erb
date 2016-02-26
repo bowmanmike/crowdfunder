@@ -37,7 +37,7 @@
 <div>
 
   <h3>Total pledges for this project: $<%= @project.pledges.all.sum(:amount) %>.00</h3>
-  <h4>Distance to Goal: $<%= @project.funding_goal - @project.pledges.all.sum(:amount) %></h4>
+  <h4>Distance to Goal: $<%= @project.funding_goal - @project.pledges.all.sum(:amount) %>.00</h4>
 
   <div class="new_pledge_form">
     <%= form_for [@project, @pledge] do |f| %>
