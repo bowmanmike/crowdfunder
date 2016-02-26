@@ -1,0 +1,12 @@
+<div id="error_explanation">
+  <% if @comment.errors.any? %>
+      <h6><%= pluralize(@comment.errors.count, "error") %> prohibited this comment from being saved:</h6>
+      <ul>
+        <% @comment.errors.full_messages.each do |message| %>
+            <div class="alert">
+              <li><%= message %></li>
+            </div>
+        <% end %>
+      </ul>
+  <% end %>
+</div>

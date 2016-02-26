@@ -1,5 +1,7 @@
 <h1><%= @project.name %></h1>
 
+<p><b>There are <%= @project.days_remaining %> days left before this project expires</b></p>
+
 
 <ul>
   <li>Funding Goal: $<%= @project.funding_goal %></li>
@@ -63,3 +65,13 @@
   <%= link_to "Edit or Delete this project", edit_project_path %>
   <% end %>
 </div>
+
+<div>
+  <%= render "comments/form" %>
+</div>
+
+<div id="comments_list">
+  <%= render "comments" %>
+</div>
+
+

@@ -1,0 +1,12 @@
+<% @project.comments.order(created_at: :desc).each do |comment|  %>
+
+    <p>
+      <%= comment.message %>
+      <br>
+
+      <% if comment.user != nil  %>
+          <em> by <%= comment.user.username %></em>
+          Added on: <%= comment.created_at %>
+      <% end %>
+
+<% end %>

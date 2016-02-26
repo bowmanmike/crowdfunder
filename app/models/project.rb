@@ -9,9 +9,18 @@ class Project < ActiveRecord::Base
   has_many :pledges, dependent: :destroy
   has_many :rewards, dependent: :destroy
   has_and_belongs_to_many :tags
+  has_many :comments
+
 
   def add_tag(tag)
     self.tags << tag unless self.tags.include?(tag)
   end
 
+  def days_remaining
+    ((self.end_date.end_of_day - Time.now.beginning_of_day) / 86400).to_i
+  end
+
+  def fully_funded?
+    self.pledges.all.sum(:amount) >= self.funding_goal
+  end
 end
