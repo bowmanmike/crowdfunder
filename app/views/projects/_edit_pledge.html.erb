@@ -1,5 +1,3 @@
-<h1>Update Pledge from <%= @pledge.backer.first_name + " " + @pledge.backer.last_name %> for <%= @project.name %></h1>
-
 <%= form_for [@project, @pledge] do |f| %>
 
   <div class="field">

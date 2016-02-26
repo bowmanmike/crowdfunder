@@ -36,21 +36,29 @@
   <% end %>
 </div>
 
-<div>
+<div class="pledge-info">
 
   <h3>Total pledges for this project: $<span id="total-pledges"><%= @project.pledges.all.sum(:amount) %></span>.00</h3>
   <h4>Distance to Goal: $<span id="distance-to-goal"><%= @project.funding_goal - @project.pledges.all.sum(:amount) %></span>.00</h4>
 
-  <div class="new_pledge_form">
-    <%= form_for [@project, @pledge], id: "new-pledge" do |f| %>
-    <div class="field">
-      <%= f.label :amount %>
-      <%= f.number_field :amount %>
-    </div>
+  <div class="pledge_form">
+    <% if @project.pledges.find_by(backer_id: current_user) %>
+      <p>You've already backed this project.</p>
+      <p>You've pledged $<%= @project.pledges.find_by(backer_id: current_user).amount %>.00</p>
+      <p>Update your pledge:</p>
+      <%= render 'edit_pledge' %>
+    <% else %>
+      <p>Pledge to this project:</p>
+      <%= form_for [@project, @pledge], id: "new-pledge" do |f| %>
+      <div class="field">
+        <%= f.label :amount %>
+        <%= f.number_field :amount %>
+      </div>
 
-    <div class="action">
-      <%= f.submit %>
-    </div>
+      <div class="action">
+        <%= f.submit %>
+      </div>
+      <% end %>
     <% end %>
   </div>
 

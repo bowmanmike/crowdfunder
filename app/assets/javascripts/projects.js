@@ -20,8 +20,7 @@ $(document).on('page:load ready', function() {
       url: self.attr('action'),
       type: self.attr('method'),
       dataType: 'script',
-      data: self.serialize()
+      data: self.serialize(),
     })
   });
-
 });
