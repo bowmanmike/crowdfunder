@@ -16,11 +16,20 @@ body {
   background-color: RGBa(111, 204, 135, 0.8);
 }
 #nav h1 {
+  float: left;
+  padding-left: 20px;
+  padding-top: 20px;
+}
+#nav h1 a {
   font-family: 'Josefin Slab', serif;
   font-weight: bold;
   font-size: 48px;
-  float: left;
-  padding-left: 20px;
+  text-decoration: none;
+  color: inherit;
+}
+#nav a:hover {
+  background-color: inherit;
+  color: #CC3D37;
 }
 .nav-links,
 .user-links {

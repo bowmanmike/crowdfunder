@@ -10,10 +10,12 @@
 <body>
 
   <div id="nav">
-    <h1>Crowdfunder</h1>
+
+    <h1><%= link_to "Crowdfunder", root_path %></h1>
+
     <div class="user-links">
       <% if current_user && !current_page?(user_path(current_user.id)) %>
-        <%= link_to "User Page", user_path(current_user.id) %> | 
+        <%= link_to "User Page", user_path(current_user.id) %> |
       <% end %>
       <% if current_user %>
           <%= link_to "Logout", :logout, method: :post %>
@@ -28,12 +30,14 @@
       <%= link_to "Projects", projects_path %> |
       <%= link_to "Categories", tags_path %>
     </div>
+
+    <div class="flash-notifications">
+      <p id="alert"><%= flash[:alert] %></p>
+      <p id="alert"><%= flash[:notice] %></p>
+    </div>
+    
   </div>
 
-  <div>
-    <p id="alert"><%= flash[:alert] %></p>
-    <p id="alert"><%= flash[:notice] %></p>
-  </div>
 
 
   <div id="page-content">
