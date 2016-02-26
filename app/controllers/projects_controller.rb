@@ -32,7 +32,6 @@ class ProjectsController < ApplicationController
     @tags = @project.tags.order(name: :asc)
 
     if @project.pledges.find_by(backer_id: current_user)
-      puts params
       @pledge = @project.pledges.find_by(backer_id: current_user)
     else
       @pledge = Pledge.new
