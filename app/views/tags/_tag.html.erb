@@ -1,11 +1,14 @@
 <div class="tag-link">
   <%= link_to "#{tag.name}", tag_path(tag) %>
 </div>
-<div class="untag-link">
-  <% if @project.owner == current_user %>
-    <%= form_for @project, remote: true, html: { id: "remove-tag" } do |f| %>
-      <%= hidden_field_tag :tag, tag.id %>
-      <%= f.submit "X" %>
+
+<% unless request.original_url == projects_url || root_url %>
+  <div class="untag-link">
+    <% if @project.owner == current_user %>
+      <%= form_for @project, remote: true, html: { id: "remove-tag" } do |f| %>
+        <%= hidden_field_tag :tag, tag.id %>
+        <%= f.submit "X" %>
+      <% end %>
     <% end %>
-  <% end %>
-</div>
+  </div>
+<% end %>

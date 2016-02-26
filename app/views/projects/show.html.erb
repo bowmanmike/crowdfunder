@@ -1,4 +1,4 @@
-
+<%= request.original_url %>
 <%= image_tag @project.feature_image.feature.url %>
 
 <h1><%= @project.name %></h1>
@@ -67,5 +67,3 @@
 <div id="comments_list">
   <%= render "comments" %>
 </div>
-
-

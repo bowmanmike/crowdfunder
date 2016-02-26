@@ -3,10 +3,16 @@ class ProjectsController < ApplicationController
 
   def index
     @pledges = Pledge.all
-    @projects = if params[:proj_search]
-      Project.where("LOWER(name) LIKE LOWER(?)", "#{params[:proj_search]}%")
-    else
-      Project.all
+
+    if params[:proj_search] == nil && params[:tag_search] == nil
+      @projects = Project.all
+      @tags = Tag.all
+    elsif params[:proj_search]
+      @projects = Project.where("LOWER(name) LIKE LOWER(?)", "#{params[:proj_search]}%")
+      @tags = Tag.all
+    elsif params[:tag_search]
+      @tags = Tag.where("LOWER(name) LIKE LOWER(?)", "#{params[:tag_search]}%")
+      @projects = Project.all
     end
 
     respond_to do |format|

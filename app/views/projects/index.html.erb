@@ -5,24 +5,49 @@
   projects fully funded
 </b></p>
 
-<% if current_user %>
-  <%= link_to "Add a Project", new_project_path %>
-<% else %>
-    <p>Please login to add a project</p>
-<% end %>
+<div>
+  <% if current_user %>
+    <%= link_to "Add a Project", new_project_path %>
+  <% else %>
+      <p>Please login to add a project</p>
+  <% end %>
+</div>
 
-<%= form_tag root_path, method: :get, remote: true, id: 'proj-search-form' do %>
-  <%= text_field_tag :proj_search, params[:proj_search] %>
-  <%= submit_tag "Search" %>
-<% end %>
 
 <div class="show-projects">
+
+  <div id="project-search-form">
+    <%= form_tag root_path, method: :get, remote: true, id: 'proj-search-form' do %>
+    <%= text_field_tag :proj_search, params[:proj_search] %>
+    <%= submit_tag "Search projects" %>
+    <% end %>
+  </div>
+
   <% if @projects.any? %>
     <h4>All Projects</h4>
     <div id="project-list">
       <%= render @projects %>
     </div>
   <% else %>
-    <p>No Projects yet!</p>
+    <p>No projects yet!</p>
+  <% end %>
+</div>
+
+<div class="show-tags">
+
+  <div id="tag-search-form">
+    <%= form_tag root_path, method: :get, remote: true, id: 'tag-search-form' do %>
+    <%= text_field_tag :tag_search, params[:tag_search] %>
+    <%= submit_tag "Search tags" %>
+    <% end %>
+  </div>
+
+  <% if @tags.any? %>
+    <h4>All Tags</h4>
+    <div id="tag-list">
+      <%= render @tags %>
+    </div>
+  <% else %>
+    <p>No tags yet!</p>
   <% end %>
 </div>
