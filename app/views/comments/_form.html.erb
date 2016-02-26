@@ -3,7 +3,7 @@
     <h4>New Comment</h4>
 
 
-    <%= form_for [@project, @comment], :remote => true do |f| %>
+    <%= form_for [@project, @comment] do |f| %>
 
         <div class="field" >
           <%= f.text_area :comment %>
