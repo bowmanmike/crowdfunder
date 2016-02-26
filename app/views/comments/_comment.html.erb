@@ -1,3 +1,10 @@
-<div class="field" >
+<div class="new_comment" >
+  <p>
+    <%= comment.message %>
+    <br>
 
+    <% if comment.user != nil  %>
+        <em> by <%= comment.user.email %></em>
+        Added on: <%= comment.created_at %>
+    <% end %>
 </div>
