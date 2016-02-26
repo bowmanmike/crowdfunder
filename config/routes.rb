@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   resources :tags
   resources :users
   resources :sessions
+  resources :comments
 
   get 'login'   => 'sessions#new',    :as => :login
   post 'logout' => 'sessions#destroy',:as => :logout
