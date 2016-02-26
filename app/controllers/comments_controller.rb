@@ -1,23 +1,26 @@
 class CommentsController < ApplicationController
-  def index
-
-  end
+  before_action :load_project
 
   def new
     @comment = Comment.new
   end
 
   def show
-
   end
 
   def create
     @comment = @project.comments.build(comment_params)
     @comment.user = current_user
 
-  end
-
-  def update
+    respond_to do |format|
+      if @comment.save
+        format.html { redirect_to  project_url(@project.id), notice: 'Comment added.'}
+        format.js {} # This will look for app/views/reviews/create.js.erb
+      else
+        format.html {render 'projects/show', alert: 'There was an error.'}
+        format.js {} # This will look for app/views/reviews/create.js.erb
+      end
+    end
   end
 
   def destroy
@@ -27,5 +30,9 @@ class CommentsController < ApplicationController
 
   def comment_params
     params.require(:comment).permit(:comment)
+  end
+
+  def load_project
+    @project = Project.find(params[:project_id])
   end
 end

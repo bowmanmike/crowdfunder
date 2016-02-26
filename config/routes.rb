@@ -4,12 +4,13 @@ Rails.application.routes.draw do
 
   resources :projects do
     resources :rewards, :pledges
+    resources :comments, only [:show, :create, :destroy]
   end
 
   resources :tags
   resources :users
   resources :sessions
-  resources :comments
+
 
   get 'login'   => 'sessions#new',    :as => :login
   post 'logout' => 'sessions#destroy',:as => :logout
