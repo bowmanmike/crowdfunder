@@ -22,6 +22,11 @@
     <%= f.text_area :description %>
   </div>
 
+  <div>
+    <%= f.label :image %>
+    <%= f.file_field :image %>
+  <div>
+
   <h3>Rewards</h3>
     <div id="rewards">
       <%= f.fields_for :rewards do |reward_fields| %>
