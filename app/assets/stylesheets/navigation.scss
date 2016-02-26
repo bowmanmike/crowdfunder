@@ -1,6 +1,7 @@
 html,
 body {
   margin: 0;
+  font-family: 'Dosis', sans-serif;
 }
 #page-content {
   padding: 20px;
@@ -13,6 +14,13 @@ body {
   position: fixed;
   overflow: auto;
   background-color: RGBa(111, 204, 135, 0.8);
+}
+#nav h1 {
+  font-family: 'Josefin Slab', serif;
+  font-weight: bold;
+  font-size: 48px;
+  float: left;
+  padding-left: 20px;
 }
 .nav-links,
 .user-links {
