@@ -17,4 +17,8 @@ class Project < ActiveRecord::Base
   def days_remaining
     ((self.end_date.end_of_day - Time.now.beginning_of_day) / 86400).to_i
   end
+
+  def fully_funded?
+    self.pledges.all.sum(:amount) >= self.funding_goal
+  end
 end
