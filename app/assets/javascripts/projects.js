@@ -19,13 +19,8 @@ $(document).on('page:load ready', function() {
     $.ajax({
       url: self.attr('action'),
       type: self.attr('method'),
-      dataType: 'html',
-      data: self.serialize(),
-      success: function(data) {
-        console.log(data)
-        $('#total-pledges').html('<%=j @project.pledges.all.sum(:amount) %>');
-        $('#distance-to-goal').html('<%=j @project.funding_goal - @project.pledges.all.sum(:amount) %>');
-      }
+      dataType: 'script',
+      data: self.serialize()
     })
   });
 
