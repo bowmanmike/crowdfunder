@@ -2,7 +2,7 @@
   <%= link_to "#{tag.name}", tag_path(tag) %>
 </div>
 
-<% unless request.original_url == projects_url || root_url %>
+<% unless request.original_url == projects_url || request.original_url == root_url %>
   <div class="untag-link">
     <% if @project.owner == current_user %>
       <%= form_for @project, remote: true, html: { id: "remove-tag" } do |f| %>
