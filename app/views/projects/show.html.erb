@@ -16,9 +16,11 @@
   </div>
 <% end %>
 
-<div class="add-tags">
-  <%= render 'add_tag_form' %>
-</div>
+<% if @project.owner == current_user %>
+  <div class="add-tags">
+    <%= render 'add_tag_form' %>
+  </div>
+<% end %>
 
 <div class="rewards">
   <h3>Rewards!</h3>

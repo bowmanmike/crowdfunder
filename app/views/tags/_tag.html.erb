@@ -1,1 +1,7 @@
-<%= link_to "#{tag.name}", tag_path(tag) %> |
+<%= link_to "#{tag.name}", tag_path(tag) %>
+<% if @project.owner == current_user %>
+  <%= form_for @project, remote: true, html: { id: "remove-tag" } do |f| %>
+    <%= hidden_field_tag :tag, tag.id %>
+    <%= f.submit "x" %>
+  <% end %>
+<% end %>
