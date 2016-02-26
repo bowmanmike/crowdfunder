@@ -1,3 +1,11 @@
 // Place all the styles related to the tags controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.tag-link,
+.untag-link {
+  display: inline-block;
+  margin-bottom: 10px;
+}
+.untag-link {
+  margin-right: 10px;
+}
