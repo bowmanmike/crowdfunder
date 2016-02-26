@@ -1,5 +1,8 @@
 <h1><%= @project.name %></h1>
 
+<% if @project.owner == current_user %>
+  <p><b>There are <%= @project.days_remaining %> days left before this project expires</b></p>
+<% end %>
 
 <ul>
   <li>Funding Goal: $<%= @project.funding_goal %></li>

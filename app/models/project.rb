@@ -14,4 +14,7 @@ class Project < ActiveRecord::Base
     self.tags << tag unless self.tags.include?(tag)
   end
 
+  def days_remaining
+    ((self.end_date.end_of_day - Time.now.beginning_of_day) / 86400).to_i
+  end
 end
