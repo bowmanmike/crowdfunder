@@ -13,7 +13,7 @@ User.create(first_name: "Mike", last_name: "Bowman", username: "JohnnyFucktard",
 # User.create(first_name: "Steve", last_name: "Oniel", email: "steve@gmail.com", password: "steve",
 #             password_confirmation: "steve" )
 
-50.times do
+10.times do
   Project.create(name: Faker::Commerce.product_name, end_date: Time.current, funding_goal: Faker::Commerce.price, description: "This is a serious
   project yo", owner_id: 1)
 end
@@ -26,4 +26,9 @@ Project.find(1).rewards.create(name: "John Boy", price: 50, number_available: 1,
 # Project.find(2).rewards.create(name: "John Boy", price: 50, number_available: 1, project_id: 2)
 # Project.find(3).rewards.create(name: "John Boy", price: 50, number_available: 1, project_id: 3)
 
-Project.find(1).pledges.create(amount: 50, backer_id: 1, reward_id: 1)
+5.times do
+  Project.find(1).pledges.create(amount: 50, backer_id: 1, reward_id: 1)
+end
+5.times do
+  Tag.create(name: Faker::Commerce.product_name)
+end
