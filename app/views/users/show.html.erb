@@ -15,7 +15,7 @@
 
 <p>
   <% owned_projects = Project.where(owner: current_user)%>
-  <% if owned_projects  %>
+  <% if owned_projects.count > 0 %>
   <strong>You have <%= owned_projects.count %> projects, totalling $
   <%= owned_projects.sum(:funding_goal) %> in target funding, and $
   <%= Pledge.where(project_id: owned_projects.ids).sum(:amount) %> in pledges.</strong>
@@ -32,7 +32,7 @@
 <p>
   <% pledges = Pledge.where(backer: current_user) %>
   <% if pledges  %>
-    <strong>You have committed<%= pledges.count %> pledges, totalling $
+    <strong>You have committed <%= pledges.count %> pledges, totalling $
     <%= pledges.sum(:amount) %>.</strong>
     <ul>
       <% pledges.each do |pledge| %>
