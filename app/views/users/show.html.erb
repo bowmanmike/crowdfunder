@@ -21,6 +21,19 @@
   <% end %>
 </p>
 
+<p>
+  <% pledges = Pledge.where(backer: current_user) %>
+  <% if pledges  %>
+    <strong>You have <%= pledges.count %> pledges, totalling $
+    <%= pledges.sum(:amount) %>.</strong>
+    <ul>
+      <% pledges.each do |pledge| %>
+        <li><%= Project.find(pledge.project_id).name %>: $<%= pledge.amount %></li>
+      <% end %>
+  <% end %>
+  </ul>
+</p>
+
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>
