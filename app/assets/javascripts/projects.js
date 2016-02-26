@@ -12,16 +12,7 @@ $(document).on('page:load ready', function() {
     })
   });
 
-  $('#add-pledge').on('click', function(e) {
-    e.preventDefault();
-
-    var self = $(this)
-
-    $.ajax({
-      type: 'GET',
-      dataType: 'script'
-    })
-  })
+  
 });
 // $(document).on('page:load ready', function() {
   // $('#add-tag').submit(function(e) {

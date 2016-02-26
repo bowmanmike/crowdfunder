@@ -40,14 +40,19 @@
   <h4>Distance to Goal: $<%= @project.funding_goal - @project.pledges.all.sum(:amount) %></h4>
 
   <div class="new_pledge_form">
+    <%= form_for [@project, @pledge] do |f| %>
+    <div class="field">
+      <%= f.label :amount %>
+      <%= f.number_field :amount %>
+    </div>
+
+    <div class="action">
+      <%= f.submit %>
+    </div>
+    <% end %>
   </div>
 
-  <% pledge = @project.pledges.find_by(backer_id: current_user) %>
-  <% if current_user && pledge %>
-  <h4>You have pledged $<%= pledge.amount %> to this project! <%= link_to "Update your pledge", new_project_pledge_path(@project) %></h4>
-  <% else%>
-    <%= link_to "Pledge to this project", new_project_pledge_path(@project), id: "add-pledge" %>
-  <% end %>
+
 
 </div>
 
