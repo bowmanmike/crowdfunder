@@ -1,0 +1,2 @@
+$('#total-pledges').html('<%= @project.pledges.all.sum(:amount) %>');
+$('#distance-to-goal').html('<%= @project.funding_goal - @project.pledges.all.sum(:amount) %>');

@@ -21,6 +21,24 @@ $(document).on('page:load ready', function() {
       type: self.attr('method'),
       dataType: 'script',
       data: self.serialize(),
+      success: function(data) {
+        self.hide();
+      }
     })
   });
+
+  $(document).on('submit', '.edit_pledge', function(e) {
+    e.preventDefault();
+    var self = $(this)
+
+    $.ajax({
+      url: self.attr('action'),
+      type: self.attr('method'),
+      dataType: 'script',
+      data: self.serialize(),
+      success: function(data) {
+        self.hide();
+      }
+    })
+  })
 });
