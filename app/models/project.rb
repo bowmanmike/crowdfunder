@@ -9,6 +9,8 @@ class Project < ActiveRecord::Base
   has_many :pledges, dependent: :destroy
   has_many :rewards, dependent: :destroy
   has_and_belongs_to_many :tags
+  has_many :comments
+
 
   def add_tag(tag)
     self.tags << tag unless self.tags.include?(tag)
