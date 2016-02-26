@@ -13,8 +13,10 @@ User.create(first_name: "Mike", last_name: "Bowman", username: "JohnnyFucktard",
 # User.create(first_name: "Steve", last_name: "Oniel", email: "steve@gmail.com", password: "steve",
 #             password_confirmation: "steve" )
 
-Project.create(name: "kickstarter", end_date: Time.current, funding_goal: 100000, description: "This is a serious
-project yo", owner_id: 1)
+50.times do
+  Project.create(name: Faker::Commerce.product_name, end_date: Time.current, funding_goal: Faker::Commerce.price, description: "This is a serious
+  project yo", owner_id: 1)
+end
 # Project.create(name: "kickstand", end_date: Time.current, funding_goal: 100000, description: "This is a serious
 # project yo", owner_id: 2)
 # Project.create(name: "crowdfunder", end_date: Time.current, funding_goal: 100000, description: "This is a serious
