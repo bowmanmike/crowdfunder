@@ -30,7 +30,13 @@ class ProjectsController < ApplicationController
   def show
     @project = Project.find(params[:id])
     @tags = @project.tags.order(name: :asc)
-    @pledge = Pledge.new
+
+    if @project.pledges.find_by(backer_id: current_user)
+      puts params
+      @pledge = @project.pledges.find_by(backer_id: current_user)
+    else
+      @pledge = Pledge.new
+    end
 
     if current_user
       @comment = Comment.new
