@@ -8,22 +8,33 @@
 </head>
 <body>
 
-<div id="nav">
-  <% if current_user %>
-      <%= link_to "Edit Profile", edit_user_path(current_user.id) %>
-      <%= link_to "Logout", :logout, method: :post %>
-  <% else %>
-      <%= link_to "Register", new_user_path %> |
-      <%= link_to "Login", :login %>
-  <% end %>
-</div>
-<div>
-  <p id="alert"><%= flash[:alert] %></p>
-  <p id="alert"><%= flash[:notice] %></p>
-</div>
+  <div id="nav">
+    <div class="user-links">
+      <% if current_user %>
+          <%= link_to "Edit Profile", edit_user_path(current_user.id) %>
+          <%= link_to "Logout", :logout, method: :post %>
+      <% else %>
+          <%= link_to "Register", new_user_path %> |
+          <%= link_to "Login", :login %>
+      <% end %>
+    </div>
+
+    <div class="nav-links">
+      <%= link_to "Home", root_path %> |
+      <%= link_to "Projects", projects_path %> |
+      <%= link_to "Categories", tags_path %>
+    </div>
+  </div>
+
+  <div>
+    <p id="alert"><%= flash[:alert] %></p>
+    <p id="alert"><%= flash[:notice] %></p>
+  </div>
 
 
-<%= yield %>
+  <div id="page-content">
+    <%= yield %>
+  </div>
 
 
   <footer>
