@@ -1,2 +1,10 @@
-$('#comments_list').prepend('<%= j render @comment %>');
-$('#comment_message').val("");
+<% if @comment.errors.any? %>
+
+  $("#comment_errors").html("<%= j (render(:partial => 'errors')) %>");
+
+<% else %>
+
+  $('#comments_list').prepend('<%= j render @comment %>');
+  $('#comment_message').val("");
+
+<% end %>
