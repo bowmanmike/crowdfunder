@@ -29,6 +29,6 @@ Project.find(1).rewards.create(name: "John Boy", price: 50, number_available: 1,
 # 5.times do
 #   Project.find(1).pledges.create(amount: 50, backer_id: 1, reward_id: 1)
 # end
-# 5.times do
-#   Tag.create(name: Faker::Commerce.product_name)
-# end
+5.times do
+  Tag.create(name: Faker::Commerce.product_name)
+end

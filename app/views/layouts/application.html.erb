@@ -5,28 +5,40 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <link href='https://fonts.googleapis.com/css?family=Dosis|Josefin+Slab' rel='stylesheet' type='text/css'>
 </head>
 <body>
 
-<div id="nav">
-  <% if current_user && !current_page?(user_path(current_user.id)) %>
-    <%= link_to "User Page", user_path(current_user.id) %>
-  <% end %>
-  <% if current_user %>
-      <%= link_to "Logout", :logout, method: :post %>
-  <% else %>
-      <%= link_to "Register", new_user_path %> |
-      <%= link_to "Login", :login %>
-  <% end %>
+  <div id="nav">
+    <h1>Crowdfunder</h1>
+    <div class="user-links">
+      <% if current_user && !current_page?(user_path(current_user.id)) %>
+        <%= link_to "User Page", user_path(current_user.id) %>
+      <% end %>
+      <% if current_user %>
+          <%= link_to "Logout", :logout, method: :post %>
+      <% else %>
+          <%= link_to "Register", new_user_path %> |
+          <%= link_to "Login", :login %>
+      <% end %>
+    </div>
 
-</div>
-<div>
-  <p id="alert"><%= flash[:alert] %></p>
-  <p id="alert"><%= flash[:notice] %></p>
-</div>
+    <div class="nav-links">
+      <%= link_to "Home", root_path %> |
+      <%= link_to "Projects", projects_path %> |
+      <%= link_to "Categories", tags_path %>
+    </div>
+  </div>
+
+  <div>
+    <p id="alert"><%= flash[:alert] %></p>
+    <p id="alert"><%= flash[:notice] %></p>
+  </div>
 
 
-<%= yield %>
+  <div id="page-content">
+    <%= yield %>
+  </div>
 
 
   <footer>
