@@ -11,6 +11,11 @@
     <p>Please login to add a project</p>
 <% end %>
 
+<%= form_tag root_path, method: :get, id: 'proj-search-form' do %>
+  <%= text_field_tag :proj_search, params[:proj_search] %>
+  <%= submit_tag "Search" %>
+<% end %>
+
 <div class="show-projects">
   <% if @projects.any? %>
     <h4>All Projects</h4>

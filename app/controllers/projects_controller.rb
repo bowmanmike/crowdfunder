@@ -2,8 +2,12 @@ class ProjectsController < ApplicationController
 
 
   def index
-    @projects = Project.all
     @pledges = Pledge.all
+    @projects = if params[:proj_search]
+      Project.where("LOWER(name) LIKE LOWER(?)", "#{params[:proj_search]}%")
+    else
+      Project.all
+    end
   end
 
   def show
